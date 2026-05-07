@@ -1,0 +1,413 @@
+/* ===== ADMIN.CSS — Админ-панель в едином стиле с Fashion Future ===== */
+
+/* ---------- ПЕРЕМЕННЫЕ (легко менять тему) ---------- */
+:root {
+    --bg-body: #faf9f6;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #1e1e1e;
+    --text-secondary: #555;
+    --border-light: #eaeaea;
+    --accent-black: #000000;
+    --accent-black-hover: #2c2c2c;
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.03);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.05);
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --transition: all 0.2s ease;
+}
+
+/* ---------- ГЛОБАЛЬНЫЕ ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+h1, h2, h3, .sidebar h2, .content h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 1rem;
+}
+
+/* ---------- КОНТЕЙНЕР АДМИНКИ ---------- */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== САЙДБАР ===== */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-light);
+    padding: 2rem 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    transition: var(--transition);
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--accent-black);
+    border-left: 4px solid var(--accent-black);
+    padding-left: 0.75rem;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.9rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    color: var(--accent-black);
+    transform: translateX(4px);
+}
+
+/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+.content {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    background-color: var(--bg-body);
+}
+
+.content h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-black);
+    position: relative;
+    display: inline-block;
+}
+
+.content h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-black);
+    border-radius: 2px;
+}
+
+/* ===== СТАТИСТИКА ===== */
+.stats {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0 2.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-black);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: #ddd;
+}
+
+.stat-card span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* ===== КНОПКИ ===== */
+.btn, a.btn, button[type="submit"]:not(.action-button) {
+    display: inline-block;
+    background-color: var(--accent-black);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    font-family: inherit;
+    
+}
+
+.btn:hover, a.btn:hover, button[type="submit"]:hover {
+    background-color: var(--accent-black-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-hover);
+}
+
+/* ===== ТАБЛИЦЫ ===== */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    margin: 1.5rem 0;
+}
+
+.data-table th,
+.data-table td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.data-table th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.data-table tr:hover {
+    background-color: #fefefe;
+}
+
+.data-table a {
+    color: var(--accent-black);
+    text-decoration: none;
+    border-bottom: 1px dashed #ccc;
+    margin-right: 0.75rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.data-table a:hover {
+    border-bottom-color: var(--accent-black);
+}
+
+/* inline-формы внутри таблицы */
+.data-table form {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.data-table select, 
+.data-table input[type="text"] {
+    padding: 0.3rem 0.6rem;
+    border-radius: 30px;
+    border: 1px solid var(--border-light);
+    font-size: 0.85rem;
+}
+
+/* ===== ФОРМЫ ===== */
+form label {
+    display: block;
+    margin-top: 1.2rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="password"],
+form input[type="email"],
+form textarea,
+form select {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+    background-color: #fff;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--accent-black);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+form button {
+    margin-top: 1.5rem;
+}
+
+form input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+    transform: scale(1.1);
+    vertical-align: middle;
+}
+
+/* ===== СТРАНИЦА ВХОДА ===== */
+.login-container {
+    max-width: 420px;
+    margin: 10vh auto;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-light);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.login-container input {
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+.login-container button {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+/* ===== СООБЩЕНИЯ ОБ ОШИБКАХ ===== */
+.error {
+    background-color: #fee2e2;
+    border-left: 5px solid var(--danger);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    color: var(--danger-hover);
+    font-size: 0.9rem;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 1rem;
+    }
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .sidebar ul li {
+        margin-bottom: 0;
+    }
+    .sidebar ul li a {
+        padding: 0.4rem 1rem;
+    }
+    .content {
+        padding: 1.5rem;
+    }
+    .stats {
+        flex-direction: column;
+    }
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+    form input, form textarea, form select {
+        max-width: 100%;
+    }
+    .login-container {
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+}
+
+/* ===== ДОПОЛНИТЕЛЬНО: скролл сайдбара при необходимости ===== */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+.sidebar::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Кнопка "Добавить" */
+.btn-add {
+    background-color: #2e7d32;
+    margin-bottom: 1.5rem;
+}
+.btn-add:hover {
+    background-color: #1b5e20;
+}
+
+/* Группа кнопок в форме */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Адаптив для таблицы */
+@media (max-width: 1000px) {
+    .data-table {
+        font-size: 0.8rem;
+    }
+    .data-table th,
+    .data-table td {
+        padding: 0.5rem;
+    }
+}

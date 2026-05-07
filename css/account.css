@@ -1,0 +1,768 @@
+/* ===== personal_account.css — Личный кабинет ===== */
+/* Стили полностью гармонируют с основным style.css */
+
+/* ---------- БАЗОВЫЕ ПЕРЕОПРЕДЕЛЕНИЯ ДЛЯ СТРАНИЦЫ КАБИНЕТА ---------- */
+body {
+    background-color: #dedede;
+    font-family: 'Playfair Display', serif;
+    padding: 2rem 1rem;
+}
+
+/* ---------- КОНТЕЙНЕР ЛИЧНОГО КАБИНЕТА ---------- */
+.account-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 32px;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: box-shadow 0.3s, transform 0.2s;
+    animation: fadeInPage 0.5s ease-out;
+}
+
+.account-container:hover {
+    box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- ССЫЛКА НАЗАД ---------- */
+.back-link {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 40px;          /* сильное скругление */
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid #000000;
+    cursor: pointer;
+}
+
+.back-link:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- КАРТОЧКИ ДАННЫХ И ФОРМ ---------- */
+.login-form {
+    background: #f8f8f8;
+    border-radius: 24px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    border: 1px solid #eaeaea;
+    transition: box-shadow 0.2s;
+}
+
+.login-form h2, .login-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    font-size: 1.6rem;
+    color: #000;
+}
+
+/* Блок информации о пользователе */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row .label {
+    font-weight: 600;
+    color: #555;
+    min-width: 150px;
+    font-size: 0.95rem;
+}
+
+.info-row .value {
+    color: #1a1a1a;
+    text-align: right;
+    word-break: break-word;
+    max-width: 60%;
+    font-weight: 500;
+}
+
+/* ---------- ФОРМЫ (РЕДАКТИРОВАНИЕ, СМЕНА ПАРОЛЯ) ---------- */
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-group textarea {
+    border-radius: 24px;
+    resize: vertical;
+}
+
+/* Кнопки */
+button[type="submit"],
+.toggle-password-btn,
+.toggle-profile-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.8rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 0.8rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+button[type="submit"]:hover,
+.toggle-password-btn:hover,
+.toggle-profile-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.15);
+}
+
+/* Сообщения */
+.message-success {
+    background: #e0f2e9;
+    border-left: 5px solid #2c7a4b;
+    padding: 0.8rem 1.2rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    color: #1e6f3f;
+    font-weight: 500;
+}
+
+.message-error {
+    background: #ffe6e6;
+    border-left: 5px solid #c53030;
+    padding: 0.8rem 1.2rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    color: #b91c1c;
+    font-weight: 500;
+}
+
+.logout-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #c53030;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.logout-link:hover {
+    color: #9b1c1c;
+    text-decoration: underline;
+}
+
+/* ---------- ИСТОРИЯ ЗАКАЗОВ ---------- */
+.orders-section {
+    margin-top: 2.5rem;
+    border-top: 2px solid #eaeaea;
+    padding-top: 2rem;
+}
+
+.orders-section h3 {
+    font-size: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.order-card {
+    background: #fff;
+    border-radius: 24px;
+    margin-bottom: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid #eaeaea;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.order-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.1);
+    border-color: #ccc;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.order-header > div:first-child {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.order-number {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.order-date {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.order-total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.order-status {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-pending { background: #fff3e0; color: #b45309; }
+.status-paid { background: #e0f2fe; color: #0369a1; }
+.status-shipped { background: #dbeafe; color: #1e40af; }
+.status-delivered { background: #dcfce7; color: #15803d; }
+.status-cancelled { background: #fee2e2; color: #b91c1c; }
+
+.action-buttons-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.action-button {
+    padding: 5px 14px;
+    border: none;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pay-button {
+    background: #00993d;
+    color: white;
+}
+.pay-button:hover {
+    background: #006127;
+    transform: translateY(-1px);
+}
+.cancel-button {
+    background: #890000;
+    color: white;
+}
+.cancel-button:hover {
+    background: #500000;
+    transform: translateY(-1px);
+}
+
+.toggle-icon {
+    font-size: 1rem;
+    transition: transform 0.2s;
+    margin-left: 8px;
+    color: #888;
+}
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.order-items {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #e0e0e0;
+    display: none;
+}
+.order-items.show {
+    display: block;
+    animation: fadeUp 0.3s ease;
+}
+
+.order-items table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+.order-items th,
+.order-items td {
+    text-align: left;
+    padding: 10px 5px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.order-items th {
+    color: #555;
+    font-weight: 600;
+}
+
+/* ---------- ИЗБРАННОЕ ---------- */
+.wishlist-section {
+    margin-top: 3rem;
+    border-top: 2px solid #eaeaea;
+    padding-top: 2rem;
+}
+
+.wishlist-section h3 {
+    font-size: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.8rem;
+}
+
+.wishlist-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 1.2rem;
+    transition: all 0.25s ease;
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+    animation: cardReveal 0.4s ease backwards;
+}
+
+.wishlist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.1);
+    border-color: #ccc;
+}
+
+.wishlist-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1.2;
+    object-fit: cover;
+    border-radius: 20px;
+    background: #f5f5f5;
+}
+
+.wishlist-card h4 {
+    margin: 0.8rem 0 0.4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.wishlist-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.wishlist-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.wishlist-remove,
+.wishlist-add-to-cart {
+    flex: 1;
+    padding: 8px 0;
+    border: none;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.wishlist-remove {
+    background: #f0f0f0;
+    color: #b91c1c;
+}
+.wishlist-remove:hover {
+    background: #fee2e2;
+    transform: translateY(-2px);
+}
+
+.wishlist-add-to-cart {
+    background: #000;
+    color: #fff;
+}
+.wishlist-add-to-cart:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+/* ---------- АНИМАЦИИ (те же, что в основном style.css) ---------- */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- АДАПТИВНОСТЬ ---------- */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .account-container {
+        padding: 1.5rem;
+        border-radius: 24px;
+    }
+    .info-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .info-row .label,
+    .info-row .value {
+        max-width: 100%;
+        text-align: left;
+    }
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .action-buttons-group {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .order-header > div:first-child {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .wishlist-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .account-container {
+        padding: 1rem;
+    }
+    .toggle-password-btn,
+    .toggle-profile-btn,
+    button[type="submit"] {
+        width: 100%;
+        margin-right: 0;
+        text-align: center;
+    }
+    .order-card {
+        padding: 1rem;
+    }
+    .order-number {
+        font-size: 1rem;
+    }
+    .wishlist-card h4 {
+        font-size: 0.9rem;
+    }
+}
+/* Детали цены заказа со скидкой */
+.order-price-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.order-subtotal {
+    font-size: 0.75rem;
+    color: #888;
+    text-decoration: line-through;
+}
+.order-discount {
+    font-size: 0.75rem;
+    color: #2e7d32;
+}
+.order-total {
+    font-weight: 700;
+    font-size: 1rem;
+}
+@media (max-width: 600px) {
+    .order-price-details {
+        align-items: flex-start;
+        width: 100%;
+    }
+}
+
+/* Адреса */
+.address-form, .addresses-list {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 24px;
+}
+.address-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #eee;
+}
+.address-info { flex: 2; }
+.address-actions { display: flex; gap: 0.5rem; }
+.default-badge {
+    background: #2e7d32;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+}
+.btn-add {
+    background: #000;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.default-btn, .delete-btn, .edit-address-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+.default-btn { background: #e3f2fd; color: #0d47a1; }
+.delete-btn { background: #fee; color: #c62828; }
+.edit-address-btn { background: #f5f5f5; }
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 24px;
+    max-width: 500px;
+    width: 90%;
+}
+.close-modal {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* История авторизаций */
+.login-history-section {
+    margin-top: 2rem;
+    border-top: 2px solid #eaeaea;
+    padding-top: 2rem;
+}
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.history-table th,
+.history-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+.history-table th {
+    background: #f8f8f8;
+    font-weight: 600;
+}
+.user-agent-cell {
+    font-size: 0.85rem;
+    color: #555;
+    max-width: 250px;
+    word-break: break-word;
+}
+@media (max-width: 700px) {
+    .history-table th,
+    .history-table td {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+    .user-agent-cell {
+        max-width: 150px;
+    }
+}
+/* Уведомления */
+.notifications-section {
+    margin-top: 2rem;
+    border-top: 2px solid #eaeaea;
+    padding-top: 2rem;
+}
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.mark-read-btn {
+    background: #f0f0f0;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.notification-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-left: 4px solid #ccc;
+}
+.notification-item.unread {
+    border-left-color: #ff3366;
+    background: #fff8f9;
+}
+.notification-title {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+.notification-message {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+}
+.notification-date {
+    font-size: 0.7rem;
+    color: #999;
+}
+.empty-notifications {
+    color: #666;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Недавно просмотренные */
+.recent-section {
+    margin-top: 2rem;
+    border-top: 2px solid #eaeaea;
+    padding-top: 2rem;
+}
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.recent-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    border: 1px solid #f0f0f0;
+}
+.recent-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+}
+.recent-card a {
+    text-decoration: none;
+    color: inherit;
+}
+.recent-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.recent-card h4 {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin: 0;
+}
+.recent-price {
+    font-weight: 700;
+    padding: 0 0.5rem 0.5rem;
+    font-size: 0.9rem;
+}
+@media (max-width: 600px) {
+    .recent-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+.order-city, .order-delivery {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.3rem;
+}
